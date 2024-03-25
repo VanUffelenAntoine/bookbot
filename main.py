@@ -3,13 +3,17 @@ def main():
     text = get_book_text(book_path)
     word_count = count_words(text)
     print(f"Word count: {word_count}")
+    print(f"Char count: {count_chars(text)}")
 
-def generate_dic_letters(text):
-    chars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    chars_dic = {}
-    for char in chars:
-        chars_dic[char] = 0
-    print(chars_dic)
+def count_chars(text):
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
 
 def get_book_text(path):
     with open(path) as f:
