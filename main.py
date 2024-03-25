@@ -1,9 +1,16 @@
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
-    word_count = count_words(text)
-    print(f"Word count: {word_count}")
-    print(f"Char count: {count_chars(text)}")
+    report_count(text)
+
+def report_count(text) : 
+    sorted_chars = sorted(count_chars(text).items(),key=lambda d: d[1],reverse=True)
+    print("--------Begin Report--------")
+    print(f"Word count: {count_words(text)}")
+    for key,value in sorted_chars:
+        print(f"The '{key}' character was found {value} times")
+    print("--------End Report--------")
+    
 
 def count_chars(text):
     chars = {}
