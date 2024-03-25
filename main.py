@@ -8,6 +8,8 @@ def report_count(text) :
     print("--------Begin Report--------")
     print(f"Word count: {count_words(text)}")
     for key,value in sorted_chars:
+        if not key.isalpha():
+            continue
         print(f"The '{key}' character was found {value} times")
     print("--------End Report--------")
     
